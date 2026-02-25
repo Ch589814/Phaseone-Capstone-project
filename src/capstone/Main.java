@@ -1,3 +1,4 @@
+
 package capstone;
 import java.util.List;
 import java.util.Scanner;
@@ -5,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         UniversityManager manager = new UniversityManager();
         Scanner scanner = new Scanner(System.in);
+        FileManager.loadData(manager);
         UndergraduateStudent undergrad = new UndergraduateStudent("Alice", "alice@email.com", "U123", 3.7, "Computer Science");
         GraduateStudent grad = new GraduateStudent("Bob", "bob@email.com", "G456", 3.9, "Data Science");
         Instructor inst1 = new Instructor("Dr. Smith", "smith@email.com", "I789", "Computer Science");
@@ -14,10 +16,11 @@ public class Main {
     //test graduate and undergraduate
         System.out.println("Undergrad Tuition: RWF" + undergrad.calculateTuition());
         System.out.println("Grad Tuition: RWF" + grad.calculateTuition());
-        //test universitymanager
+        //test university manager
         manager.addInstructor(inst1);
         manager.addInstructor(inst2);
-
+        manager.addStudent(undergrad);
+        manager.addStudent(grad);
         manager.addCourse(c1);
         manager.addCourse(c2);
 
@@ -33,6 +36,9 @@ public class Main {
                     System.out.println("8. View All Courses");
                     System.out.println("9. View All Instructors");
                     System.out.println("10. Exit");
+                    System.out.println("11. Save Data");
+                    System.out.println("12. Load Data");
+                    System.out.println("13. Save and Exit");
                     System.out.print("Choose an option: ");
 
                     int choice = scanner.nextInt();
@@ -53,6 +59,13 @@ public class Main {
                         case 8 -> manager.getCourses().forEach(Main::displayCourse);
                         case 9 -> manager.getInstructors().forEach(Main::displayInstructor);
                         case 10 -> {
+                            System.out.println("Goodbye!");
+                            return;
+                        }
+                        case 11 -> FileManager.saveData(manager);
+                        case 12 -> FileManager.loadData(manager);
+                        case 13 -> {
+                            FileManager.saveData(manager);
                             System.out.println("Goodbye!");
                             return;
                         }
