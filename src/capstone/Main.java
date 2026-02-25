@@ -20,6 +20,8 @@ public class Main {
 
         manager.addCourse(c1);
         manager.addCourse(c2);
+        manager.addStudent(undergrad);
+        manager.addStudent(grad);
 
                 while (true) {
                     System.out.println("\n******************** University Management System ***********************");
@@ -102,7 +104,7 @@ public class Main {
                 System.out.print("Code: "); String code = scanner.nextLine();
                 System.out.print("Title: "); String title = scanner.nextLine();
                 System.out.print("Credits: "); int credits = scanner.nextInt();
-                scanner.nextLine(); // consume newline
+                scanner.nextLine(); 
 
                 // Show available instructors
                 List<Instructor> instructors = manager.getInstructors();
