@@ -137,6 +137,7 @@ public class Main {
             private static void enrollStudent(UniversityManager manager, Scanner scanner) {
                 System.out.print("Student ID: "); String sid = scanner.nextLine();
                 System.out.print("Course Code: "); String cid = scanner.nextLine();
+                System.out.println("enrolled student : " + sid + "in course with id  " + cid + " have been successfully .");
 
                 try {
                     manager.enrollStudentInCourse(sid, cid);
